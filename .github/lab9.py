@@ -71,12 +71,15 @@ def profits(dataset):
     profit_list = []
     for i in range(len(dataset)):
         profit_list.append(dataset[i][profit])
-    max_value = max(profit_list)
-    min_value = min(profit_list)
-    max_index = profit_list.index(max_value)
-    min_index = profit_list.index(min_value)
-    print("Highest Profit Movie:", dataset[max_index], "| total profit:", max_value)
-    print("Lowest Profit Movie:", dataset[min_index], "| total profit:", min_value)
+    max_val = max(profit_list)
+    min_val = min(profit_list)
+    max_index = profit_list.index(max_val)
+    min_index = profit_list.index(min_val)
+    print("Highest Profit Movie: ", dataset[max_index])
+    print("Total Profit: ", max_val)
+    print()
+    print("Lowest Profit Movie:", dataset[min_index])
+    print("Total Profit for Lowest: ", min_val)
 
 def save_file(filename):
     def save_file(filename, data_list):
@@ -91,9 +94,9 @@ def main():
     movie_list = read_file("movies.csv")
     movie_list_profits = add_column(movie_list)
     profits(movie_list_profits)
-    file_choice = input("What's the name of the first file? ")
+    choice = input("What's the name of the first file? ")
     created_file_name = input("What's the name of the second file? ")
-    movie_list = read_file(file_choice)
+    movie_list = read_file(choice)
     movie_profit_list = add_column(movie_list)
     profits(movie_profit_list)
     save_file(created_file_name, movie_profit_list)
